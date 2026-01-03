@@ -1,0 +1,6 @@
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 24px; }
+.card { display: block; padding: 16px; border: 1px solid #ddd; border-radius: 16px; text-decoration: none; color: inherit; }
+.card:hover { border-color: #aaa; }
+footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: center; }
