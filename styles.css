@@ -95,7 +95,7 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
 }
 
 .iowawarm__img{
-  transform: translate(-2px, 0px) scale(1.00);
+  transform: translate(-6px, 0px) scale(1.00);
 }
 
 @media (max-width: 800px){
