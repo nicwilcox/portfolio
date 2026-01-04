@@ -41,3 +41,58 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
   line-height: 1;
   text-transform: lowercase;
 }
+.wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 20px;
+}
+
+.hero{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 34px;
+}
+
+.name{
+  margin: 0;
+  font-size: clamp(56px, 6vw, 110px);
+  line-height: 0.95;
+}
+
+.tagline{
+  margin: 14px 0 0 0;
+  max-width: 55ch;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.cta{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border: 2px solid #111;
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
+
+.me-photo{
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  border: 2px solid #111;
+}
+
+@media (max-width: 800px){
+  .hero{
+    grid-template-columns: 1fr;
+  }
+  .me-photo{
+    max-width: 420px;
+  }
+}
