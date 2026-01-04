@@ -21,7 +21,7 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
   height: 100%;
   display: block;
   object-fit: cover;
-  transform: translate(-9.5px, -6.5px) scale(1.08);
+  transform: translate(-8.5px, -6px) scale(1.08);
 }
 
 .tile.nexus{
