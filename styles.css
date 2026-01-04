@@ -1,3 +1,9 @@
+:root{
+  --bibl-bg: #eeeeee;
+  --bibl-green: #279145;
+  --bibl-ink: #353535;
+}
+
 body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
 .wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 24px; }
