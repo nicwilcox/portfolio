@@ -27,7 +27,7 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
 
 .nexus__logo{
   color: white;
-  font-weight: 700;
+  font-weight: 500;
   font-size: clamp(26px, 3vw, 42px);
   letter-spacing: -0.02em;
   line-height: 1;
