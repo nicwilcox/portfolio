@@ -4,3 +4,32 @@ body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial
 .card { display: block; padding: 16px; border: 1px solid #ddd; border-radius: 16px; text-decoration: none; color: inherit; }
 .card:hover { border-color: #aaa; }
 footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: center; }
+
+.tile{
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+  text-decoration: none;
+  position: relative;
+}
+
+.tile.nexus{
+  background-image: url("./assets/svg/nexus-bg.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: grid;
+  place-items: center;
+}
+
+.nexus__logo{
+  color: white;
+  font-weight: 700;
+  font-size: clamp(26px, 3vw, 42px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: lowercase;
+}
