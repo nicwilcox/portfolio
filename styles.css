@@ -42,6 +42,9 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
 .tile.shift .tile__img{
   transform: translate(-1px, 1px) scale(1.02);
 }
+.tile.shiftct .tile__img{
+  transform: translate(-1px, -1px) scale(1.02);
+}
 
 .nexus__logo{
   color: white;
