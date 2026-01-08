@@ -3,77 +3,112 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dead Silence — Project</title>
+  <title>Dead Silence — Solo Prototype</title>
+  <meta name="description" content="Dead Silence is a solo first-person stealth prototype built to showcase self-teaching, iteration, and commitment." />
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:#0b0f14;
+      color:#e6edf3;
+      line-height:1.5;
+    }
+    .wrap{ max-width: 900px; margin: 0 auto; padding: 36px 18px 60px; }
+    .card{
+      background:#111826;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:18px;
+      margin-top:14px;
+    }
+    h1{ margin:0 0 10px; font-size: 34px; line-height:1.1; }
+    p{ margin: 8px 0; color: rgba(230,237,243,.88); }
+    .muted{ color: rgba(230,237,243,.65); }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .btn{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#e6edf3;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.03);
+      font-size:12px;
+      color:rgba(230,237,243,.75);
+      margin: 6px 6px 0 0;
+    }
+    ul{ margin: 10px 0 0 18px; color: rgba(230,237,243,.82); }
+    li{ margin: 6px 0; }
+    .footer{ margin-top:16px; font-size:13px; color: rgba(230,237,243,.55); }
+  </style>
 </head>
 <body>
-  <header>
+  <div class="wrap">
     <h1>Dead Silence</h1>
-    <p>First-person stealth + knife mechanics prototype</p>
-    <p><a>Back to Projects</a></p>
-  </header>
+    <p class="muted">
+      A solo first-person stealth prototype built to prove consistency, self-teaching, and shipping.
+    </p>
 
-  <main>
-    <section>
-      <h2>Overview</h2>
+    <div class="row">
+      <!-- Replace # with your repo, video, or itch.io link if you have one -->
+      <a class="btn" href="#" target="_blank" rel="noreferrer">Demo Video (optional)</a>
+      <a class="btn" href="#" target="_blank" rel="noreferrer">Source / Notes (optional)</a>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">Why I built it</h2>
       <p>
-        Dead Silence is a first-person, low-light stealth prototype focused on satisfying movement,
-        knife throwing, and strategic decision-making. The core idea is rewarding precision and
-        smart engagement choices rather than pure gunplay.
+        I wanted a project I could own end-to-end. Dead Silence is my proof that I can commit to a long project,
+        teach myself tools as I go, and iterate toward a playable result.
       </p>
-    </section>
+    </div>
 
-    <section>
-      <h2>Core Concept</h2>
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">Core concept</h2>
+      <p class="muted" style="margin-top:0;">Low-light stealth + movement-focused combat.</p>
+      <span class="pill">First-person</span>
+      <span class="pill">Stealth</span>
+      <span class="pill">Knife mechanics</span>
+      <span class="pill">Class / build ideas</span>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">What I did (solo)</h2>
       <ul>
-        <li>Stealth-first gameplay in low-light environments</li>
-        <li>Throwing knives as the primary skill mechanic</li>
-        <li>Risk/reward: limited knives, retrieval, and missed throws</li>
-        <li>Optional close-range combat when stealth breaks</li>
+        <li>Designed the gameplay loop and scoped a “buildable” prototype plan.</li>
+        <li>Implemented core movement/combat mechanics and iterated on feel.</li>
+        <li>Built UI/UX elements and tested changes to improve clarity and pacing.</li>
+        <li>Documented progress and next steps to keep development consistent.</li>
       </ul>
-    </section>
+      <p class="muted" style="margin-top:10px;">
+        (Swap these bullets to match exactly what you implemented.)
+      </p>
+    </div>
 
-    <section>
-      <h2>Gameplay Features</h2>
-      <ul>
-        <li>First-person movement and interaction loop</li>
-        <li>Knife throw mechanics (aim, release, hit feedback)</li>
-        <li>Class-style attributes (speed / power / balanced)</li>
-        <li>Low-light tone and serious atmosphere</li>
-      </ul>
-    </section>
+    <div class="card">
+      <h2 style="margin:0 0 8px; font-size:18px;">Tools / skills demonstrated</h2>
+      <span class="pill">Self-learning</span>
+      <span class="pill">Iteration</span>
+      <span class="pill">Problem solving</span>
+      <span class="pill">Game systems thinking</span>
+      <span class="pill">Debugging</span>
+    </div>
 
-    <section>
-      <h2>Tech (fill in later)</h2>
-      <ul>
-        <li>Engine: Unreal Engine</li>
-        <li>Language: C++ / Blueprints </li>
-        <li>Tools:</li>
-      </ul>
-    </section>
+    <div class="footer">
+      © <span id="y"></span> Nicholas Wilcox — Dead Silence (solo project)
+    </div>
+  </div>
 
-    <section>
-      <h2>My Role</h2>
-      <ul>
-        <li>Prototyped core gameplay loop (movement and knife mechanics)</li>
-        <li>Implemented gameplay rules and iteration based on feel and responsiveness</li>
-        <li>Designed systems for class attributes and player decision-making</li>
-                <li>Designed systems for class attributes and player decision-making</li>
-
-      </ul>
-    </section>
-
-    <section>
-      <h2>Next Steps</h2>
-      <ul>
-        <li>Add polished animations and clearer hit feedback</li>
-        <li>Improve stealth systems (sound, visibility, detection)</li>
-        <li>Build a short gameplay trailer/demo sequence</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Nicholas Wilcox</p>
-  </footer>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
