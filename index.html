@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
+ 
   <body>
     <main class="wrap">
-      <section class="hero">
+      <section class="hero" id="top">
         <div class="hero-left">
           <h1 class="name">Nicholas Wilcox</h1>
 
@@ -19,11 +20,15 @@
             Design-minded developer. I build clean, brand-consistent web experiences with strong
             typography, layout, and micro-interactions.
           </p>
-        <p class="sub">
-          I like building data products where analysis actually changes decisions especially in sports, media, and consumer behavior.
-        </p>
 
-         <div class="pillrow">
+          <p class="sub">
+            I like building data products where analysis actually changes decisions — especially in sports,
+            media, and consumer behavior.
+          </p>
+
+       
+
+          <div class="pillrow">
             <span class="pill">Sports Analytics</span>
             <span class="pill">Data Engineering</span>
             <span class="pill">SQL + Python</span>
@@ -34,10 +39,14 @@
         </div>
 
         <div class="hero-right">
-          <img class="me-photo" src="./assets/img/profilepic.png" alt="Photo of the immaculate Nicholas Wilcox" />
+          <img
+            class="me-photo"
+            src="./assets/img/profilepic.png"
+            alt="Photo of Nicholas Wilcox"
+          />
         </div>
       </section>
-      
+
       <section class="grid">
 
         <a class="tile shift" href="./nba.html" aria-label="NBA project">
@@ -76,5 +85,26 @@
     </main>
 
     <script src="script.js"></script>
+
+ <section id="interests">
+        <h2>What I’m interested in</h2>
+        <p>
+          I’m most excited by problems where context matters as much as accuracy — the kind where you
+          combine behavior, constraints, and incentives to explain outcomes.
+        </p>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <p>Project cards go here.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          <a href="mailto:nicwilcox@uiowa.edu">nicwilcox@uiowa.edu</a>
+        </p>
+      </section>
+    </main>
   </body>
 </html>
