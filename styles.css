@@ -30,6 +30,14 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
   transform: translate(-5px, -4px) scale(1.15);
 }
 
+.tile__img__gw{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transform: translate(-5px, -4px) scale(1.25);
+}
+
 .tile.nexus{
   background-image: url("./assets/svg/nexus-bg.svg");
   background-size: cover;
