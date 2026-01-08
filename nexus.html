@@ -8,50 +8,173 @@
 <body>
   <header>
     <h1>Nexus Calendar</h1>
-    <p>Collaborative calendar web application</p>
-    <p><a>Back to Projects</a></p>
+    <p>Unified, collaborative calendar system with ICS imports + Google Calendar sync</p>
+    <a class="backlink" href="./index.html">← back</a>
+     <figure>
+        <img
+          src="./assets/img/nexus-logo.png"
+          alt="Nexus Calendar logo"
+          style="max-width: 100%; height: auto;"
+        />
+      </figure>
+
   </header>
 
   <main>
     <section>
       <h2>Overview</h2>
       <p>
-        Nexus Calendar is a collaborative calendar experience with a clean, familiar UI. Users can
-        create events, view multiple calendar layouts, and support shared/group scheduling.
+        Nexus Calendar addresses the fragmentation of modern scheduling across Google Calendar, iCloud,
+        and Outlook. Many users struggle with overlapping events, manual updates, and poor collaboration
+        between platforms. Nexus Calendar provides a centralized interface that mirrors the familiarity
+        of a physical calendar while supporting shared scheduling and imports from multiple providers.
+      </p>
+      <p>
+        We built this as a <strong>web-based system</strong> for cross-platform access and rapid deployment,
+        with a foundation that can support deeper integrations in the future.
+      </p>
+    </section>
+
+    <section>
+      <h2>Architecture</h2>
+      <figure>
+        <img
+          src="./assets/img/nexus-arch.png"
+          alt="Nexus Calendar architecture diagram showing user input on website and touchscreen calendar connected to Firebase database"
+          style="max-width: 100%; height: auto;"
+        />
+        <figcaption>
+          System flow: user input (web + groups) → database → touchscreen calendar rendering and updates.
+        </figcaption>
+      </figure>
+
+      <p>
+        The system pulls calendar events from a Firebase database and displays them on a touchscreen
+        connected to a Raspberry Pi. Updates to events flow through the same database, including group
+        calendars and shared changes.
       </p>
     </section>
 
     <section>
       <h2>Key Features</h2>
       <ul>
-        <li>Month / Day / Multi-day views</li>
-        <li>Create, edit, delete events</li>
-        <li>Notes panel</li>
-        <li>Group collaboration + shared calendars</li>
+        <li><strong>Unified calendar interface</strong> designed to mimic a physical calendar experience</li>
+        <li><strong>Group calendars</strong> for shared scheduling and collaboration</li>
+        <li><strong>Google Calendar synchronization</strong> via API (real-time integration)</li>
+        <li><strong>ICS file import</strong> for Outlook / iCloud calendars (manual upload workflow)</li>
+        <li><strong>Fast updates</strong>: changes reflected across devices within ~30 seconds (avg ~10s)</li>
       </ul>
     </section>
 
     <section>
-      <h2>Tech (fill in later)</h2>
+      <h2>Tech Stack</h2>
       <ul>
-        <li>Frontend: HTML</li>
-        <li>Backend: </li>
-        <li>Database: Firebase </li>
-        <li>Auth: OAuth </li>
+        <li><strong>Frontend:</strong> Web UI (responsive), calendar views + event creation flow</li>
+        <li><strong>Backend / Auth:</strong> Firebase Authentication</li>
+        <li><strong>Database:</strong> Firestore (events stored under user calendar collections)</li>
+        <li><strong>Integrations:</strong> Google Calendar API + OAuth2; ICS parsing for other providers</li>
+        <li><strong>Hardware:</strong> Raspberry Pi + touchscreen display</li>
       </ul>
+    </section>
+
+    <section>
+      <h2>Data Model</h2>
+      <ul>
+        <li><strong>Users:</strong> stored with email, name, Nexus ID, Firebase UID, timestamp</li>
+        <li><strong>Calendars:</strong> provider-specific (Google / iCloud / Outlook) collections</li>
+        <li><strong>Events:</strong> title, start time, end time, location, description</li>
+        <li><strong>Groups:</strong> group metadata, members, invites, shared calendar behavior</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Core Flows</h2>
+
+      <h3>Authentication + User Setup</h3>
+      <ul>
+        <li>Register user → create Firebase Auth user → generate Nexus user ID → store user record in Firestore</li>
+        <li>Login → validate credentials → look up user → return token + Nexus user ID</li>
+      </ul>
+
+      <h3>Calendar Ingestion</h3>
+      <ul>
+        <li><strong>Google:</strong> OAuth2 → pull events via Google Calendar API → batch store to Firestore</li>
+        <li><strong>Outlook/iCloud:</strong> user uploads ICS file → parse events → store to provider path in Firestore</li>
+      </ul>
+
+      <h3>Groups</h3>
+      <ul>
+        <li>Create group, invite members, accept/decline invites</li>
+        <li>Group members view/edit/upload events with shared visibility</li>
+      </ul>
+
     </section>
 
     <section>
       <h2>My Role</h2>
+      <p>
+        I focused on front-end development: building the calendar interface and user experience.
+        I worked on UI structure, interactions (creating/editing events), and ensuring the interface
+        stayed clean and intuitive across devices.
+      </p>
+    </section>
+
+    <section>
+      <h2>Challenges & Tradeoffs</h2>
       <ul>
-        <li>Built the front-end calendar UI and interactions</li>
-        <li>Implemented backend endpoints and data persistence</li>
-        <li>Worked through edge cases like overlapping events and view refreshes</li>
+        <li>
+          <strong>API restrictions:</strong> Microsoft and Apple APIs were inaccessible, so we pivoted to
+          <strong>manual ICS imports</strong> for Outlook and iCloud while keeping real-time Google sync.
+        </li>
+        <li>
+          <strong>Platform decision:</strong> we shifted from an app concept to a <strong>website</strong> for cross-platform access
+          and easier deployment within time/budget.
+        </li>
+        <li>
+          <strong>Offline requirement:</strong> became unattainable after choosing a website (web use requires internet).
+        </li>
+        <li>
+          <strong>Notes/highlights:</strong> missed due to project management oversight during integration work.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Testing Results</h2>
+      <ul>
+        <li>Calendars connect and events appear in the UI (Pass)</li>
+        <li>No duplicates / no lost events from source calendars (Pass)</li>
+        <li>Updates appear across devices within 30 seconds (Pass; average ~10 seconds)</li>
+        <li>Notes/highlights persistence (Fail)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Next Steps</h2>
+      <ul>
+        <li>Add real-time synchronization for Outlook and iCloud (replace ICS workflow)</li>
+        <li>Enable true two-way touch screen interaction (not just display)</li>
+        <li>Implement persistent notes/highlights with optional group-sharing controls</li>
+        <li>Expand mobile support and polish cross-device UX</li>
+      </ul>
+      <p><em>Source: maintenance and future improvements section.</em></p>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <ul>
+        <li>
+          GitHub:
+          <a href="https://github.com/cdm34/Nexus-Calendar" target="_blank" rel="noreferrer">
+            https://github.com/cdm34/Nexus-Calendar
+          </a>
+        </li>
       </ul>
     </section>
   </main>
 
   <footer>
+    <hr />
     <p>© 2026 Nicholas Wilcox</p>
   </footer>
 </body>
