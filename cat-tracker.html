@@ -7,64 +7,127 @@
 </head>
 <body>
   <header>
-    <h1>Indoor Cat Tracker</h1>
-    <p>BLE-based indoor positioning and session playback</p>
-    <p><a>Back to Projects</a></p>
+    <a class="backlink" href="./index.html">← back</a>
+
+    <h1>Indoor Cat Tracker (ICT)</h1>
+    <p>BLE-based indoor positioning system with real-time visualization</p>
+
+    
   </header>
 
   <main>
     <section>
       <h2>Overview</h2>
       <p>
-        An indoor tracking system that estimates a cat’s location using BLE beacons and receivers.
-        The system runs locally and provides a simple web interface to visualize movement over time.
+        Indoor Cat Tracker is a scalable IoT system designed to help pet owners monitor their cat’s location
+        inside their home. Using BLE beacons, a wearable receiver, and a cloud-hosted web interface, the
+        system estimates position in real time and visualizes movement patterns across sessions.
+      </p>
+      <p>
+        The goal was to combine <strong>hardware sensing</strong>, <strong>data ingestion</strong>, and
+        <strong>web-based analytics</strong> into a single usable system.
       </p>
     </section>
 
     <section>
-      <h2>What it does</h2>
+      <h2>Architecture</h2>
+      <figure>
+        <img
+          src="./assets/img/ct-arch.png"
+          alt="Indoor Cat Tracker architecture diagram showing BLE beacons and receiver to Raspberry Pi bridge to cloud server and web UI"
+          style="max-width: 100%; height: auto;"
+        />
+        <figcaption>System architecture: BLE devices → Raspberry Pi bridge → cloud backend → web interface.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>System Architecture (Components)</h2>
       <ul>
-        <li>Collects BLE receiver readings for a tracked device</li>
-        <li>Estimates position using beacon/receiver setup and distance approximation</li>
-        <li>Stores time-series location data per tracking session</li>
-        <li>Visualizes sessions with playback controls (slider)</li>
+        <li><strong>BLE Beacons + Receiver (ESP-32):</strong> Beacons broadcast signals; receiver estimates distance using RSSI.</li>
+        <li><strong>Raspberry Pi Bridge:</strong> Aggregates BLE readings and forwards batched data over Wi-Fi.</li>
+        <li><strong>Cloud Backend:</strong> Stores session and position data; serves the web UI.</li>
+        <li><strong>Web Dashboard:</strong> Displays live location data, session heatmaps, and playback controls.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Key Features</h2>
+      <h2>Data & Analytics</h2>
       <ul>
-        <li>Session-based tracking (start, end, review past sessions)</li>
-        <li>User-configurable room dimensions and beacon coordinates</li>
-        <li>Heatmap-style visualization and timeline playback</li>
-        <li>Local web dashboard for quick access</li>
+        <li>Location points recorded every <strong>1–2 seconds</strong></li>
+        <li>Session-based tracking (start / stop / review past sessions)</li>
+        <li>Heatmap visualization of frequently visited locations</li>
+        <li>Historical sessions stored per user for behavior analysis</li>
+        <li>Boundary-based alerts notify users when the cat leaves the beacon range</li>
       </ul>
     </section>
 
     <section>
-      <h2>Tech</h2>
+      <h2>Tech Stack</h2>
       <ul>
-        <li>Hardware: Raspberry Pi, BLE beacons/receivers (add exact models if you want)</li>
-        <li>Backend: </li>
-        <li>Frontend: </li>
-        <li>Database: Firebase </li>
+        <li><strong>Embedded / Hardware:</strong> ESP-32 (BLE 5.3), Arduino C</li>
+        <li><strong>Bridge:</strong> Raspberry Pi, Node.js (BLE ingestion + HTTP forwarding)</li>
+        <li><strong>Backend:</strong> Python, Flask, SQLite</li>
+        <li><strong>Frontend:</strong> HTML, JavaScript (dynamic heatmaps & session playback)</li>
+        <li><strong>Deployment:</strong> AWS EC2</li>
+        <li><strong>Protocols:</strong> BLE + Wi-Fi</li>
       </ul>
     </section>
 
     <section>
       <h2>My Role</h2>
       <ul>
-        <li>Built the backend endpoints for ingesting receiver readings and serving session data</li>
-        <li>Designed the session data format and storage strategy</li>
-        <li>Implemented UI for viewing past sessions and playback visualization</li>
+        <li>Built the initial web server and key API endpoints to support data flow and session handling</li>
+        <li>Developed the frontend interface for live tracking and session playback</li>
+        <li>Focused on usability: interactive UI that works in any browser without client installs</li>
+        <li>Helped translate session data into interpretable heatmaps and timeline playback</li>
       </ul>
     </section>
 
+    <section>
+      <h2>Challenges & Tradeoffs</h2>
+      <ul>
+        <li>BLE RSSI introduces noise and limits positional accuracy</li>
+        <li>Used trilateration after angle-of-arrival features weren’t available in ESP-32 core libraries</li>
+        <li>Improved results by tuning transmission power and increasing beacon count</li>
+        <li>Chose SQLite for simplicity given low write frequency and lightweight storage needs</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Security & Privacy</h2>
+      <ul>
+        <li>User authentication via <code>flask_login</code></li>
+        <li>Minimized data collection (timestamps and position only)</li>
+        <li>Server-side storage and processing to reduce exposure</li>
+      </ul>
+    </section>
   
+
+    <section>
+      <h2>Outcome</h2>
+      <figure>
+        <img
+          src="./assets/img/ct-ui.png"
+          alt="Indoor Cat Tracker Home Page"
+          style="max-width: 100%; height: auto;"
+        />
+        <figcaption>System architecture: BLE devices → Raspberry Pi bridge → cloud backend → web interface.</figcaption>
+      </figure>
+      <p>
+        Indoor Cat Tracker demonstrated a full end-to-end IoT pipeline:
+        <strong>sensors → ingestion → cloud storage → analytics → visualization</strong>.
+        The system was technically feasible and extensible, with clear next steps around accuracy and UX polish.
+      </p>
+    </section>
+
+
   </main>
 
   <footer>
+    <hr />
     <p>© 2026 Nicholas Wilcox</p>
   </footer>
 </body>
 </html>
+
