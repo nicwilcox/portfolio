@@ -35,7 +35,7 @@ footer { margin-top: 28px; opacity: 0.8; display: flex; gap: 10px; align-items: 
   height: 100%;
   display: block;
   object-fit: cover;
-  transform: translate(-5px, -4px) scale(1.16);
+  transform: translate(0px, 0px) scale(1.0);
 }
 
 .tile.nexus{
