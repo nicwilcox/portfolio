@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBA Project — Nicholas Wilcox</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <header class="subhead">
+        <a class="backlink" href="./index.html">← back</a>
+        <h1 class="page-title">NBA: Losing Leading to Winning</h1>
+      </header>
+
+      <section class="proj">
+        <div class="proj-hero">
+          <img class="proj-cover" src="./assets/svg/nbaproj.svg" alt="NBA project card" />
+        </div>
+
+        <div class="proj-copy">
+          <p class="proj-lede">
+            Imagine you’re at a game. Your team is down six at halftime.
+            Are you quietly confident your team will bounce back—or is it a sneak preview
+            of how the game will end?
+          </p>
+
+          <div class="proj-meta">
+            <div><strong>Question:</strong> How does “losing” at halftime affect win odds and performance vs expectations?</div>
+            <div><strong>Data:</strong> 2024–25 NBA regular season (home-team perspective)</div>
+            <div><strong>Sources:</strong> NBA public APIs + boxscore feeds; roster age from nbaage.com</div>
+            <div><strong>Features:</strong> halftime margin, team strength, roster age, rest days</div>
+          </div>
+
+          <div class="proj-links">
+            <a class="pill" href="#" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="pill" href="#" target="_blank" rel="noreferrer">Slides</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="proj-section">
+        <h2>Claim</h2>
+        <p>
+          Expanding on Berger &amp; Pope’s halftime findings, I argue that “losing” by itself only
+          minimally shifts a team’s raw chance of winning, but it matters a lot more once you layer
+          in context: team strength, roster age, and rest.
+        </p>
+      </section>
+
+      <section class="proj-section">
+        <h2>Background</h2>
+        <ul>
+          <li>
+            Berger &amp; Pope (“Can Losing Lead to Winning?”) suggest teams slightly behind at halftime
+            may win more often due to motivation/effort.
+          </li>
+          <li>
+            Klein Teeselink et al. revisit the idea across sports with larger datasets and find the effect
+            small/inconsistent and often not statistically reliable with tighter models.
+          </li>
+          <li>
+            Andrew Gelman argues the original effect may be overstated and highlights how modeling choices
+            can make tiny effects look big.
+          </li>
+        </ul>
+      </section>
+
+      <section class="proj-section">
+        <h2>Method</h2>
+        <ul>
+          <li><strong>Perspective:</strong> home team. Halftime margin = (home score − away score).</li>
+          <li><strong>Outcome:</strong> whether the home team came back to win after trailing at halftime.</li>
+          <li><strong>Strength metric:</strong> each team’s average home point differential (bucketed).</li>
+          <li><strong>Roster age:</strong> merged team average roster age (bucketed: young / prime / old).</li>
+          <li><strong>Rest:</strong> days since last game (bucketed: 0–1 / 2–3 / 4+).</li>
+        </ul>
+      </section>
+
+      <section class="proj-section">
+        <h2>Finding 1: Raw halftime win curve looks normal (no magic)</h2>
+        <p>
+          My version of the halftime curve for the full 2024–25 season slopes upward smoothly:
+          big halftime leads matter a lot. Near zero, being down a couple points nudges odds, but doesn’t
+          flip the game by itself.
+        </p>
+
+        <figure class="fig">
+          <img src="./assets/img/halftime_curve.png" alt="Halftime margin vs home win probability (2024–25)" />
+          <figcaption>Halftime margin (home perspective) vs win probability for 2024–25.</figcaption>
+        </figure>
+      </section>
+
+      <section class="proj-section">
+        <h2>Finding 2: Strength changes what “down at half” means</h2>
+        <p>
+          Conditioning on games where the home team is losing at halftime, comeback rates depend heavily on
+          team strength:
+        </p>
+        <ul>
+          <li><strong>Strong:</strong> ~39% comeback rate</li>
+          <li><strong>Middle:</strong> ~29%</li>
+          <li><strong>Weak:</strong> ~13%</li>
+        </ul>
+
+        <figure class="fig">
+          <img src="./assets/img/strength.png" alt="Comeback rate by home team strength when trailing at halftime" />
+          <figcaption>Comeback rate (only games where home team trails at half), grouped by team strength.</figcaption>
+        </figure>
+      </section>
+
+      <section class="proj-section">
+        <h2>Finding 3: Older rosters are slightly better at comebacks</h2>
+        <p>
+          Again only for home teams trailing at halftime:
+        </p>
+        <ul>
+          <li><strong>Old:</strong> ~33%</li>
+          <li><strong>Prime:</strong> ~30%</li>
+          <li><strong>Young:</strong> ~24%</li>
+        </ul>
+
+        <figure class="fig">
+          <img src="./assets/img/age.png" alt="Comeback rate by roster age when trailing at halftime" />
+          <figcaption>Comeback rate (home team trails at half), grouped by roster age bucket.</figcaption>
+        </figure>
+      </section>
+
+      <section class="proj-section">
+        <h2>Finding 4: Rest matters a lot</h2>
+        <p>
+          Among home teams trailing at halftime:
+        </p>
+        <ul>
+          <li><strong>0–1 days rest:</strong> ~18%</li>
+          <li><strong>2–3 days rest:</strong> ~31%</li>
+          <li><strong>4+ days rest:</strong> ~26% (possible rust / weird schedule spots)</li>
+        </ul>
+
+        <figure class="fig">
+          <img src="./assets/img/rest.png" alt="Comeback rate by rest days when trailing at halftime" />
+          <figcaption>Comeback rate (home team trails at half), grouped by rest bucket.</figcaption>
+        </figure>
+      </section>
+
+      <section class="proj-section">
+        <h2>Finding 5: Combining strength + age + rest shows the “rubber band” pattern</h2>
+        <p>
+          When combining all three factors (still only looking at teams losing at halftime), the difference is huge.
+          Strong teams on normal rest come back roughly ~41–47% across age groups.
+          Weak, young teams on normal rest flip the deficit only around ~6%.
+        </p>
+
+        <figure class="fig">
+          <img src="./assets/img/combo.png" alt="Comeback rate by strength, age, and rest when trailing at halftime" />
+          <figcaption>Combined view: comeback rate conditional on trailing at halftime, split by strength/age/rest.</figcaption>
+        </figure>
+      </section>
+
+      <section class="proj-section">
+        <h2>Conclusion</h2>
+        <p>
+          So, does losing lead to winning? Not in a universal way.
+          On average, losing at halftime only modestly affects raw win probability and generally disadvantages you.
+          But once you condition on context—who is trailing, how strong they are, how old they are, and how rested they are—
+          the data is patterned.
+        </p>
+        <p>
+          Being down at half is close to a death sentence for weak, young, tired teams.
+          For strong, rested teams, it’s closer to a challenge they’re likely to solve.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+
