@@ -3,54 +3,159 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Iowa City Warm Project — Project</title>
+  <title>Iowa City Warm Project</title>
+  <meta name="description" content="Iowa City Warm Project provides warm clothing to community members in need." />
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:#0b0f14;
+      color:#e6edf3;
+      line-height:1.55;
+    }
+    .wrap{ max-width: 900px; margin:0 auto; padding: 36px 18px 64px; }
+    header{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap; }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .mark{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, #ffb703, #fb8500);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .muted{ color: rgba(230,237,243,.65); }
+    .card{
+      background:#111826;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:18px;
+      margin-top:14px;
+    }
+    h1{ margin: 0 0 10px; font-size: 34px; line-height:1.1; }
+    h2{ margin: 0 0 8px; font-size: 18px; }
+    p{ margin: 8px 0; }
+    .row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .btn{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:#e6edf3;
+      text-decoration:none;
+      font-weight:600;
+    }
+    .statgrid{
+      display:grid; grid-template-columns: repeat(3, 1fr);
+      gap:10px; margin-top:10px;
+    }
+    @media (max-width: 760px){ .statgrid{ grid-template-columns:1fr; } }
+    .stat{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      border-radius:14px;
+      padding:14px;
+    }
+    .stat .num{ font-size: 22px; font-weight:900; }
+    .stat .label{ font-size: 12px; letter-spacing:.12em; text-transform:uppercase; color: rgba(230,237,243,.65); margin-top:6px; }
+    ul{ margin:10px 0 0 18px; color: rgba(230,237,243,.82); }
+    li{ margin: 6px 0; }
+    .footer{ margin-top:18px; font-size:13px; color: rgba(230,237,243,.55); }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Iowa City Warm Project</h1>
-    <p>Community clothing drive initiative</p>
-    <p><a>Back to Projects</a></p>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px;">Iowa City Warm Project</div>
+          <div class="muted" style="font-size:12px;">Warm clothing • Community support • Local impact</div>
+        </div>
+      </div>
+      <div class="muted" style="font-size:12px;">
+        Founded by <strong style="color:#e6edf3;">Nicholas Wilcox</strong>
+      </div>
+    </header>
 
-  <main>
-    <section>
-      <h2>Overview</h2>
+    <section class="card" style="margin-top:16px;">
+      <h1>Keeping Iowa City warm — one donation at a time.</h1>
+      <p class="muted">
+        The Iowa City Warm Project collects and distributes warm clothing for community members who need it most.
+        Our goal is simple: reduce cold-weather hardship by making coats, jackets, and winter essentials easier to access.
+      </p>
+
+      <div class="row">
+        <!-- Replace # with your contact form, Instagram, or donation info link if you have one -->
+        <a class="btn" href="#" target="_blank" rel="noreferrer">Donate (optional link)</a>
+        <a class="btn" href="#" target="_blank" rel="noreferrer">Volunteer (optional link)</a>
+        <a class="btn" href="#" target="_blank" rel="noreferrer">Contact (optional link)</a>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mission Statement</h2>
       <p>
-        A community initiative to collect and redistribute warm clothing. Focused on making donating
-        simple, communicating need clearly, and organizing logistics for reliable distribution.
+        We exist to support the Iowa City community by providing warm clothing to people facing financial hardship,
+        housing insecurity, or unexpected need—especially during the winter months. We believe warmth is a basic need,
+        and our community is strongest when we look out for each other.
       </p>
     </section>
 
-    <section>
-      <h2>What I Did</h2>
+    <section class="card">
+      <h2>Impact</h2>
+      <p class="muted" style="margin-top:0;">
+        Thanks to donors and volunteers, we’ve already made a real difference locally.
+      </p>
+
+      <div class="statgrid">
+        <div class="stat">
+          <div class="num">100+</div>
+          <div class="label">People helped</div>
+        </div>
+        <div class="stat">
+          <div class="num">Coats • Jackets • Layers</div>
+          <div class="label">Items distributed</div>
+        </div>
+        <div class="stat">
+          <div class="num">Iowa City</div>
+          <div class="label">Community served</div>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:10px;">
+        (Update these stats anytime as your project grows.)
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>How it works</h2>
       <ul>
-        <li>Designed campaign messaging and visuals</li>
-        <li>Planned donation logistics (drop-off flow, sorting, distribution)</li>
-        <li>Created a simple system to track donations and impact</li>
+        <li><strong>Collect:</strong> We accept warm clothing donations (coats, hoodies, gloves, hats, socks, and layers).</li>
+        <li><strong>Sort:</strong> Items are organized by size and type so they can be distributed efficiently.</li>
+        <li><strong>Distribute:</strong> We share items directly with community members or through local partners and events.</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Impact (fill in later)</h2>
+    <section class="card">
+      <h2>What we need most</h2>
       <ul>
-        <li>Items collected: (add)</li>
-        <li>Drop-off locations / partners: (add)</li>
-        <li>People served: (add)</li>
+        <li>Winter coats and jackets (all sizes)</li>
+        <li>Gloves, hats, scarves</li>
+        <li>Warm socks and thermals</li>
+        <li>Blankets and hand warmers (new preferred)</li>
       </ul>
     </section>
 
-    <section>
-      <h2>Next Steps</h2>
-      <ul>
-        <li>Expand partners and drop-off locations</li>
-        <li>Improve tracking and reporting</li>
-        <li>Build a simple public page for updates</li>
-      </ul>
-    </section>
-  </main>
+    <div class="footer">
+      © <span id="year"></span> Iowa City Warm Project • Founded by Nicholas Wilcox
+    </div>
+  </div>
 
-  <footer>
-    <p>© 2026 Nicholas Wilcox</p>
-  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
