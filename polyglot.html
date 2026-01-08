@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polyglot Recommendation System — Nicholas Wilcox</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <main class="wrap">
+      <p><a href="./index.html">← Back to home</a></p>
+
+      <h1>Polyglot Recommendation System</h1>
+
+      <p>
+        A movie recommendation stack using <strong>PostgreSQL</strong> as the source of truth and
+        <strong>Redis Stack</strong> for fast search + caching, designed for responsiveness and explainable ranking.
+      </p>
+
+      <p>
+        <strong>Stack:</strong> PostgreSQL · Redis Stack · SQL · Python CLI · Caching · Ranking
+      </p>
+
+      <hr />
+
+      <h2>Goal</h2>
+      <p>
+        Build a practical recommender that’s <strong>fast</strong>, <strong>explainable</strong>, and easy to use from a
+        simple CLI. The key idea is using each system where it’s strongest: SQL for durable truth + aggregations, Redis for
+        low-latency lookup and search.
+      </p>
+
+      <h2>What it does</h2>
+      <ul>
+        <li><strong>Search</strong> movies quickly (Redis full-text search).</li>
+        <li><strong>Recommend</strong> unseen movies using a hybrid score (personalization + popularity).</li>
+        <li><strong>Cache</strong> user ratings to avoid repeated DB hits and keep the UI responsive.</li>
+      </ul>
+
+
+      <hr />
+
+      <h2>System diagram</h2>
+      <img
+        src="./assets/img/diagram.png"
+        alt="Polyglot system architecture diagram"
+        style="max-width: 100%; height: auto;"
+      />
+      
+      <hr />
+
+      <h2>Architecture</h2>
+      <ul>
+        <li><strong>PostgreSQL:</strong> movies, users, ratings; computes recommendation candidates and scoring.</li>
+        <li><strong>Redis Stack:</strong> movie hashes + search index to support fast lookup and discovery.</li>
+        <li><strong>ETL:</strong> loads movies into Redis and builds the search index.</li>
+        <li><strong>Cache:</strong> per-user ratings stored in Redis (with TTL) to quickly filter “already seen.”</li>
+      </ul>
+
+      <hr />
+
+      <h2>Scoring idea (explainable)</h2>
+      <p>The recommender blends personalization with crowd wisdom:</p>
+      <ul>
+        <li><strong>Personalization:</strong> match recommendations to genres a user rates highly.</li>
+        <li><strong>Popularity/quality:</strong> incorporate global average rating and rating count for stability.</li>
+        <li><strong>Practicality:</strong> keep it simple enough to reason about and debug.</li>
+      </ul>
+    
+
+      <hr />
+
+      <h2>Contact</h2>
+      <p><a href="mailto:nicwilcox@uiowa.edu">nicwilcox@uiowa.edu</a></p>
+
+      <footer>
+        <p>
+          <a href="mailto:nicholaswilcox03@gmail.com">Email</a> ·
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
