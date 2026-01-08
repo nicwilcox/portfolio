@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indoor Cat Tracker — Project</title>
+</head>
+<body>
+  <header>
+    <h1>Indoor Cat Tracker</h1>
+    <p>BLE-based indoor positioning and session playback</p>
+    <p><a>Back to Projects</a></p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>
+        An indoor tracking system that estimates a cat’s location using BLE beacons and receivers.
+        The system runs locally and provides a simple web interface to visualize movement over time.
+      </p>
+    </section>
+
+    <section>
+      <h2>What it does</h2>
+      <ul>
+        <li>Collects BLE receiver readings for a tracked device</li>
+        <li>Estimates position using beacon/receiver setup and distance approximation</li>
+        <li>Stores time-series location data per tracking session</li>
+        <li>Visualizes sessions with playback controls (slider)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Key Features</h2>
+      <ul>
+        <li>Session-based tracking (start, end, review past sessions)</li>
+        <li>User-configurable room dimensions and beacon coordinates</li>
+        <li>Heatmap-style visualization and timeline playback</li>
+        <li>Local web dashboard for quick access</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Tech</h2>
+      <ul>
+        <li>Hardware: Raspberry Pi, BLE beacons/receivers (add exact models if you want)</li>
+        <li>Backend: </li>
+        <li>Frontend: </li>
+        <li>Database: Firebase </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>My Role</h2>
+      <ul>
+        <li>Built the backend endpoints for ingesting receiver readings and serving session data</li>
+        <li>Designed the session data format and storage strategy</li>
+        <li>Implemented UI for viewing past sessions and playback visualization</li>
+      </ul>
+    </section>
+
+  
+  </main>
+
+  <footer>
+    <p>© 2026 Nicholas Wilcox</p>
+  </footer>
+</body>
+</html>
